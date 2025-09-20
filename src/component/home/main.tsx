@@ -1,56 +1,59 @@
-import { Stack, Title, Text } from "@mantine/core";
+import { Stack, Image, Title, Group, Text } from "@mantine/core";
+import { IconBolt, IconCheck, IconBell } from "@tabler/icons-react";
 
-import AddCustomer from "@/component/home/addcustomer";
-import CustomersList from "@/component/home/customerslist";
 
-const Main = () => {
-    return (
-        <>
-            <style>{`
-                .custom-input {
-                font-size: 10px;
-                font-weight: 600;
-                width: 100%;
-                }
+// Post interface for strong typing
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+  createdAt: string;
+}
 
-                .custom-input::placeholder {
-                font-size: 10px;
-                font-weight: 600;
-                color: var(--black-200);
-                }
-            `}</style>
+/**
+ * Main Component
+ *
+ * Handles:
+ * - Fetching posts from API
+ * - Creating, updating, deleting posts
+ * - Searching posts
+ * - Displaying posts grid
+ * - Showing success/error messages
+ */
 
-            <Stack
-                gap="xl"
-                style={{
-                    width: "100%",
-                    height: "100vh",
-                    padding: "1px 24px",
-                    backgroundColor: "var(--white)",
-                }}
-            >
-                <Stack gap={4} align="flex-start">
-                    <Title order={1} style={{ fontSize: 20, fontWeight: 700 }}>
-                        CUSTOMERS
-                    </Title>
+const Main: React.FC = () => {
 
-                    <Text
-                        style={{
-                            fontSize: 10,
-                            fontWeight: 600,
-                            color: "var(--black-200)",
-                        }}
-                    >
-                        Manage contracts and agreements for your partner customers
-                    </Text>
-                </Stack>
+  return (
+    <Stack p="md" mt={80} gap={30} style={{ maxWidth: 800, margin: "0 auto" }}>
+      {/* Header Section */}
+      <Stack gap={0} align="center">
+       
+        <Title style={{ fontSize: 32, fontWeight: 400, color: "var(--black-100)", textAlign: "center" }}>
+          The latest in TiPost
+        </Title>
+        <Title style={{ fontSize: 32, fontWeight: 400, color: "var(--white-400)", textAlign: "center" }}>
+          delivered to your inbox weekly.
+        </Title>
+        <Group gap="sm" mt={20}>
+          <Group gap={4}>
+            <IconBolt size={9.5} stroke={1.5} style={{ color: "var(--white-400)" }} />
+            <Text style={{ fontSize: 9.5, fontWeight: 450, color: "var(--white-400)" }}>Easy to use</Text>
+          </Group>
+          <Group gap={4}>
+            <IconCheck size={9.5} stroke={1.5} style={{ color: "var(--white-400)" }} />
+            <Text style={{ fontSize: 9.5, fontWeight: 450, color: "var(--white-400)" }}>Hassle free</Text>
+          </Group>
+          <Group gap={4}>
+            <IconBell size={9.5} stroke={1.5} style={{ color: "var(--white-400)" }} />
+            <Text style={{ fontSize: 9.5, fontWeight: 450, color: "var(--white-400)" }}>Fast updates</Text>
+          </Group>
+        </Group>
+      </Stack>
 
-                <AddCustomer />
-
-                <CustomersList />
-            </Stack>
-        </>
-    );
+      {/* Create / Edit Post Section */}
+    
+    </Stack>
+  );
 };
 
 export default Main;

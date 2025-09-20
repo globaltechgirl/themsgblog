@@ -1,19 +1,37 @@
 import { AppShell } from "@mantine/core";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+
+import Header from "@/component/layout/header";
+import Footer from "@/component/layout/footer"; 
+import { ROUTES } from "@/utils/constants";
 
 const PrivateLayout = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === ROUTES.HOME;
+
   return (
     <AppShell
-      padding="md"
-      header={{ height: { base: 60, sm: 60 } }}
+      header={{ height: 60 }}
       styles={{
+        header: {
+          borderBottom: "none",
+          boxShadow: "none",
+          backgroundColor: "transparent",
+        },
         main: {
           minHeight: "100vh",
-          padding: 0,      
+          paddingTop: 0,
         },
       }}
     >
-      <Outlet />
+      <AppShell.Header>
+        <Header />
+      </AppShell.Header>
+
+      <AppShell.Main>
+        <Outlet />
+        {!isHomePage && <Footer />}
+      </AppShell.Main>
     </AppShell>
   );
 };
