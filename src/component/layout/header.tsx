@@ -154,7 +154,7 @@ const Header = () => {
           alt="profile"
           radius="xl"
           size={28}
-          style={{ border: "0.5px solid var(--grey-100)", cursor: "pointer" }}
+          style={{ border: "2px solid var(--white-100)", cursor: "pointer" }}
           onClick={() => setDropdownOpen(prev => !prev)}
         />
 

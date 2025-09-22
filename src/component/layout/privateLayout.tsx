@@ -2,7 +2,7 @@ import { AppShell, Box } from "@mantine/core";
 import { Outlet, useLocation } from "react-router-dom";
 
 import Header from "@/component/layout/header";
-import Footer from "@/component/layout/footer"; 
+import Footer from "@/component/layout/footer";
 import { ROUTES } from "@/utils/constants";
 
 const PrivateLayoutAbsolute = () => {
@@ -13,9 +13,7 @@ const PrivateLayoutAbsolute = () => {
     <AppShell
       header={{ height: 60 }}
       styles={{
-        root: {
-          backgroundColor: "var(--white-100)",
-        },
+        root: { backgroundColor: "var(--white-100)" },
         header: {
           borderBottom: "none",
           boxShadow: "none",
@@ -24,56 +22,57 @@ const PrivateLayoutAbsolute = () => {
         main: {
           minHeight: "100vh",
           paddingTop: 0,
-          marginBottom: "0px",
+          marginBottom: 0,
           backgroundColor: "transparent",
         },
       }}
     >
-      <AppShell.Header
-        style={{
-          background: "transparent",
-          position: "absolute", // floats above the page
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 10,
-        }}
-      >
+      {isHomePage ? (
         <Box
           style={{
-            backgroundColor: isHomePage ? "var(--white-200)" : "transparent",
-            borderTopLeftRadius: isHomePage ? "12px" : 0,
-            borderTopRightRadius: isHomePage ? "12px" : 0,
-            margin: isHomePage ? "10px auto 0 auto" : 0,
-            width: isHomePage ? "98%" : "100%",
-            height: "100%",
+            backgroundColor: "var(--white-200)",
+            borderRadius: "12px",
+            margin: "10px auto",
+            width: "98%",
+            overflow: "hidden",
           }}
         >
-          <Header />
-        </Box>
-      </AppShell.Header>
-
-      <AppShell.Main>
-        {isHomePage ? (
-          <Box
+          <AppShell.Header
             style={{
-              backgroundColor: "var(--white-200)",
-              borderBottomLeftRadius: "12px",
-              borderBottomRightRadius: "12px",
-              margin: "20px auto", 
-              marginBottom: "10px",
-              width: "98%",
+              position: "relative", 
+              background: "transparent",
+              height: 60,
+              zIndex: 10,
             }}
           >
+            <Header />
+          </AppShell.Header>
+
+          <AppShell.Main>
             <Outlet />
-          </Box>
-        ) : (
-          <>
+          </AppShell.Main>
+        </Box>
+      ) : (
+        <>
+          <AppShell.Header
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              background: "transparent",
+              zIndex: 10,
+            }}
+          >
+            <Header />
+          </AppShell.Header>
+
+          <AppShell.Main>
             <Outlet />
             <Footer />
-          </>
-        )}
-      </AppShell.Main>
+          </AppShell.Main>
+        </>
+      )}
     </AppShell>
   );
 };
