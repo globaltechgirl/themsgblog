@@ -1,25 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Grotesk:wght@300..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import "tailwindcss";
 
 @layer base {
   /*  Default (Light) Theme */
   :root {
-    --black-100: #0f0f0f;
-    --black-200: #9b9b9b;
+    --grey-100: #56524f;
     --white-100: #ffffff;
-    --white-200: #f4f4f4;
-    --white-300: #dcdcdc;
-    --white-400: #bfbfbf;;
+    --white-200: #f5f5f5;
+    --brown-100: #b5aba1;
   }
 }
 
 @theme {
-  --color-black-100: var(--black-100);
-  --color-black-200: var(--black-200);
+  --color-grey-100: var(--grey-100);
   --color-white-100: var(--white-100);
   --color-white-200: var(--white-200);
-  --color-white-300: var(--white-300);
-  --color-white-400: var(--white-400);
+  --color-brown-100: var(--brown-100);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,7 +28,7 @@
 body {
   background: white;
   color: black;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;
 }

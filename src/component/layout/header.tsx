@@ -18,14 +18,14 @@ const Tooltip = ({ label }: { label: string }) => (
     style={{
       position: "absolute",
       top: "135%",
-      backgroundColor: "var(--white-200)",
+      backgroundColor: "var(--white-100)",
       borderRadius: "8px",
       padding: "2px 6px",
       whiteSpace: "nowrap",
       zIndex: 20,
     }}
   >
-    <Text style={{ color: "var(--black-100)", fontSize: 9, fontWeight: 500 }}>
+    <Text style={{ color: "var(--grey-100)", fontSize: 9, fontWeight: 500 }}>
       {label}
     </Text>
   </Box>
@@ -90,7 +90,7 @@ const Header = () => {
   }, []);
 
   const navAnchorBase = {
-    color: "var(--black-100)",
+    color: "var(--grey-100)",
     borderRadius: "8px",
     padding: "7px 9px",
     display: "flex",
@@ -112,7 +112,7 @@ const Header = () => {
           gap: "10px",
           padding: "5px",
           borderRadius: "12px",
-          backgroundColor: "var(--white-200)",
+          backgroundColor: "var(--white-100)",
         }}
       >
         <Box
@@ -122,7 +122,7 @@ const Header = () => {
             left: activeStyle.left,
             width: activeStyle.width,
             height: "79%",
-            backgroundColor: "var(--white-100)",
+            backgroundColor: "var(--white-200)",
             borderRadius: "8px",
             boxShadow: "0 0px 5px rgba(0,0,0,0.15)",
             transition: "all 0.3s ease-in-out",
@@ -154,7 +154,7 @@ const Header = () => {
           alt="profile"
           radius="xl"
           size={28}
-          style={{ border: "0.5px solid var(--black-200)", cursor: "pointer" }}
+          style={{ border: "0.5px solid var(--grey-100)", cursor: "pointer" }}
           onClick={() => setDropdownOpen(prev => !prev)}
         />
 
@@ -162,9 +162,9 @@ const Header = () => {
           <Box
             style={{
               position: "absolute",
-              top: "110%",
+              top: "120%",
               right: 0,
-              backgroundColor: "var(--white-200)",
+              backgroundColor: "var(--white-100)",
               borderRadius: "12px",
               display: "flex",
               flexDirection: "column",
@@ -185,17 +185,17 @@ const Header = () => {
                   gap: "6px",
                   padding: "4px 8px",
                   borderRadius: "8px",
-                  color: "var(--black-100)",
-                  backgroundColor: "var(--white-200)",
+                  color: "var(--grey-100)",
+                  backgroundColor: "var(--white-100)",
                   textDecoration: "none",
                   transition: "background 0.2s",
                 }}
-                onMouseEnter={e => e.currentTarget.style.backgroundColor = "var(--white-100)"}
-                onMouseLeave={e => e.currentTarget.style.backgroundColor = "var(--white-200)"}
+                onMouseEnter={e => e.currentTarget.style.backgroundColor = "var(--white-200)"}
+                onMouseLeave={e => e.currentTarget.style.backgroundColor = "var(--white-100)"}
                 onClick={() => setDropdownOpen(false)}
               >
                 {icon}
-                <Text style={{ color: "var(--black-100)", fontSize: 9, fontWeight: 500 }}>
+                <Text style={{ color: "var(--grey-100)", fontSize: 9, fontWeight: 500 }}>
                   {label}
                 </Text>
               </Anchor>

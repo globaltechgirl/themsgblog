@@ -26,7 +26,7 @@ const Footer: FC = () => {
         style={{
           fontSize: 10,                              
           textAlign: "center",                 
-          color: "var(--black-200)",          
+          color: "var(--grey-100)",          
           fontWeight: 450,                 
         }}
       >
@@ -36,7 +36,7 @@ const Footer: FC = () => {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            color: "var(--black-100)",
+            color: "var(--grey-100)",
             textDecoration: "none",
             fontSize: 10,
             fontWeight: 450,
