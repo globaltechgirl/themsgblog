@@ -1,80 +1,66 @@
-import { AppShell, Box } from "@mantine/core";
+import { useMemo } from "react";
+import { AppShell } from "@mantine/core";
+import type { AppShellProps } from "@mantine/core";
 import { Outlet, useLocation } from "react-router-dom";
 
-import Header from "@/component/layout/header";
 import Footer from "@/component/layout/footer";
 import { ROUTES } from "@/utils/constants";
 
-const PrivateLayoutAbsolute = () => {
+const PrivateLayout = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === ROUTES.HOME;
+
+  const { showHeader, showFooter } = useMemo(() => {
+    const hiddenRoutes = ["/landing", ROUTES.HOME, ROUTES.BLOGS];
+    const isHidden = hiddenRoutes.includes(location.pathname);
+
+    return {
+      showHeader: !isHidden,
+      showFooter: !isHidden,
+    };
+  }, [location.pathname]);
+
+  const appShellStyles: AppShellProps["styles"] = {
+    root: {
+      backgroundColor: "var(--white-200)",
+      width: "98%",
+      height: "100%",
+      margin: "10px auto",
+      borderRadius: 12,
+    },
+    header: {
+      borderBottom: "none",
+      boxShadow: "none",
+      backgroundColor: "transparent",
+    },
+    main: {
+      minHeight: "100vh",
+      paddingTop: 0,
+      marginBottom: 0,
+      backgroundColor: "transparent",
+    },
+  };
 
   return (
-    <AppShell
-      header={{ height: 60 }}
-      styles={{
-        root: { backgroundColor: "var(--white-100)" },
-        header: {
-          borderBottom: "none",
-          boxShadow: "none",
-          backgroundColor: "transparent",
-        },
-        main: {
-          minHeight: "100vh",
-          paddingTop: 0,
-          marginBottom: 0,
-          backgroundColor: "transparent",
-        },
-      }}
-    >
-      {isHomePage ? (
-        <Box
+    <AppShell header={{ height: 60 }} styles={appShellStyles}>
+      {showHeader && (
+        <AppShell.Header
           style={{
-            backgroundColor: "var(--white-200)",
-            borderRadius: "12px",
-            margin: "10px auto",
-            width: "98%",
-            overflow: "hidden",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            background: "transparent",
+            zIndex: 10,
           }}
-        >
-          <AppShell.Header
-            style={{
-              position: "relative", 
-              background: "transparent",
-              height: 60,
-              zIndex: 10,
-            }}
-          >
-            <Header />
-          </AppShell.Header>
-
-          <AppShell.Main>
-            <Outlet />
-          </AppShell.Main>
-        </Box>
-      ) : (
-        <>
-          <AppShell.Header
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              background: "transparent",
-              zIndex: 10,
-            }}
-          >
-            <Header />
-          </AppShell.Header>
-
-          <AppShell.Main>
-            <Outlet />
-            <Footer />
-          </AppShell.Main>
-        </>
+        />
       )}
+
+      <AppShell.Main>
+        <Outlet />
+        {showFooter && <Footer />}
+      </AppShell.Main>
     </AppShell>
   );
 };
 
-export default PrivateLayoutAbsolute;
+export default PrivateLayout;

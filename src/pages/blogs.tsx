@@ -1,5 +1,9 @@
-export default function Blogs() {
+const Blogs = () => {
+
+
   return (
-    <h1>Blogs Page</h1>
+<h1>Hey</h1>
   );
-}
+};
+
+export default Blogs;

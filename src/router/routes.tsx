@@ -1,20 +1,20 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import type { RouteObject } from "react-router-dom";
 
 import PrivateLayout from "@/component/layout/privateLayout";
 import Login from "@/pages/auth/login";
-import Home from "@/pages/home";
 import Blogs from "@/pages/blogs";
 import Reads from "@/pages/reads";
 import Daily from "@/pages/daily";
+import Landing from "@/pages/landing";
 import AuthGuard from "@/router/authGuard";
 import { ROUTES } from "@/utils/constants";
 
-const router = createBrowserRouter([
+const routes: RouteObject[] = [
   {
     path: ROUTES.AUTH.LOGIN,
     element: <Login />,
   },
-
   {
     path: ROUTES.ROOT,
     element: <AuthGuard />,
@@ -22,8 +22,7 @@ const router = createBrowserRouter([
       {
         element: <PrivateLayout />,
         children: [
-          { path: "", element: <Navigate to={ROUTES.HOME} replace /> },
-          { path: ROUTES.HOME.replace("/", ""), element: <Home /> },
+          { path: ROUTES.HOME.replace("/", ""), element: <Landing /> },
           { path: ROUTES.BLOGS.replace("/", ""), element: <Blogs /> },
           { path: ROUTES.READS.replace("/", ""), element: <Reads /> },
           { path: ROUTES.DAILY.replace("/", ""), element: <Daily /> },
@@ -32,6 +31,8 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
+
+const router = createBrowserRouter(routes);
 
 export default router;

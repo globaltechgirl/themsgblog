@@ -1,8 +1,7 @@
-export const BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+export const BASE_URL: string = import.meta.env.VITE_API_BASE_URL || "";
 
 export const ROUTES = {
   ROOT: "/",
-
   HOME: "/home",
 
   BLOGS: "/blogs",
@@ -19,23 +18,16 @@ export const ROUTES = {
     REGISTER: "/auth/register",
     FORGOT_PASSWORD: "/auth/forgot-password",
   },
-};
+} as const;
 
-export const NavLinks = [
-  {
-    label: "Home",
-    link: ROUTES.HOME,
-  },
-  {
-    label: "Blogs",
-    link: ROUTES.BLOGS,
-  },
-  {
-    label: "Reads",
-    link: ROUTES.READS,
-  },
-  {
-    label: "Daily",
-    link: ROUTES.DAILY,
-  },
+interface NavLink {
+  label: string;
+  link: string;
+}
+
+export const NavLinks: NavLink[] = [
+  { label: "Home", link: ROUTES.HOME },
+  { label: "Blogs", link: ROUTES.BLOGS },
+  { label: "Reads", link: ROUTES.READS },
+  { label: "Daily", link: ROUTES.DAILY },
 ];
