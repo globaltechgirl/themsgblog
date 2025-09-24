@@ -1,11 +1,9 @@
 import type { CSSProperties } from "react";
-import { Box, Image, Text, Group } from "@mantine/core";
+import { Box, Image, Text } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 import mainImage from "@/assets/bg.svg";
-import SubstackIcon from "@/assets/icons/substack";
-import InstagramIcon from "@/assets/icons/instagram";
-import PeopleIcon from "@/assets/icons/people";
+import Actions from "@/component/home/actions";
 
 interface CornerProps {
   position: "top-left" | "top-right" | "bottom-left" | "bottom-right";
@@ -28,47 +26,9 @@ const Corner = ({ position }: CornerProps) => {
   return <Box style={{ ...baseStyle, ...positionStyles[position] }} />;
 };
 
-interface IconButtonProps {
-  href: string;
-  children: React.ReactNode;
-  padding: string | number;
-}
-
-const IconButton = ({ href, children, padding }: IconButtonProps) => (
-  <a href={href} target="_blank" rel="noopener noreferrer">
-    <Box
-      style={{
-        background: "var(--white-100)",
-        borderRadius: "50%",
-        padding: "3px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Box
-        style={{
-          background: "var(--white-200)",
-          borderRadius: "50%",
-          padding,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "var(--grey-100)",
-        }}
-      >
-        {children}
-      </Box>
-    </Box>
-  </a>
-);
-
 const Splashed = () => {
   const isMd = useMediaQuery("(min-width: 768px)");
   const isLg = useMediaQuery("(min-width: 1200px)");
-
-  const iconSize = isLg ? 14 : isMd ? 13 : 12;
-  const iconPadding = isLg ? "6px" : isMd ? "5px" : "3px";
 
   return (
     <Box
@@ -76,7 +36,7 @@ const Splashed = () => {
         position: "relative",
         width: "100%",
         textAlign: "center",
-        paddingTop: "clamp(40px, 5vw, 40px)",
+        paddingTop: "clamp(5px, 5vw, 5px)",
         paddingBottom: !isMd ? 20 : "auto",
         overflow: "hidden",
       }}
@@ -131,40 +91,7 @@ const Splashed = () => {
         }}
       />
 
-      <Group
-        px="md"
-        justify="space-between"
-        align="center"
-        w="100%"
-        style={{ position: "absolute", bottom: 10, zIndex: 4 }}
-      >
-        <Box style={{ display: "flex", gap: "6px" }}>
-          <IconButton href="https://instagram.com" padding={iconPadding}>
-            <InstagramIcon width={iconSize} height={iconSize} />
-          </IconButton>
-
-          <IconButton href="https://substack.com" padding={iconPadding}>
-            <SubstackIcon width={iconSize} height={iconSize} />
-          </IconButton>
-        </Box>
-
-        <Box style={{ background: "white", borderRadius: 12, padding: "3px", display: "flex", alignItems: "center" }}>
-          <Box
-            style={{
-              background: "var(--white-200)",
-              borderRadius: 8,
-              padding: isLg ? "6px 8px" : isMd ? "5px 8px" : "3px 8px",
-              display: "flex",
-              alignItems: "center",
-              gap: "5px",
-              color: "var(--grey-100)",
-            }}
-          >
-            <PeopleIcon width={iconSize} height={iconSize} />
-            <Text style={{ fontSize: isLg ? 9.5 : isMd ? 9 : 8.5, fontWeight: 500 }}>Join Community</Text>
-          </Box>
-        </Box>
-      </Group>
+      <Actions />
     </Box>
   );
 };

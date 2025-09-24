@@ -1,4 +1,4 @@
-import Splashed from "@/component/splash/splashed"; 
+import Splashed from "@/component/home/splash/splashed"; 
 
 const Splash = () => {
   return <Splashed />;

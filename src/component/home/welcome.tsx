@@ -1,6 +1,7 @@
 import { Box, Image, Text } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
+import Actions from "@/component/home/actions";
 import mainImage from "@/assets/bg.svg";
 import box1Image from "@/assets/box1.svg";
 import box2Image from "@/assets/box2.svg";
@@ -138,6 +139,8 @@ const Welcome = () => {
           IS JESUS IS LORD
         </Text>
       </Box>
+
+      <Actions />
     </Box>
   );
 };

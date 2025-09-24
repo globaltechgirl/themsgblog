@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Variants } from "framer-motion";
-import Splashed from "@/component/splash/splashed";
+import Splashed from "@/component/home/splash/splashed";
 import Home from "@/pages/home";
 import Header from "@/component/layout/header";
 
@@ -11,7 +11,7 @@ const splashVariants: Variants = {
   exit: {
     opacity: 0,
     filter: "blur(20px)",
-    transition: { duration: 3, ease: "easeOut" },
+    transition: { duration: 1.5, ease: "easeOut" },
   },
 };
 
@@ -19,7 +19,7 @@ const Landing = () => {
   const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSplash(false), 2500);
+    const timer = setTimeout(() => setShowSplash(false), 10000);
     return () => clearTimeout(timer);
   }, []);
 
