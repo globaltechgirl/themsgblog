@@ -2,7 +2,7 @@ import { Group, Box, Text } from "@mantine/core";
 import { type ReactNode } from "react";
 
 import LogoLink from "@/component/header/logoLink";
-import NavMenu from "@/component/header/navaMenu";
+import NavMenu from "@/component/header/navMenu";
 import NavLink from "@/component/header/navLink";
 
 import { ROUTES } from "@/utils/constants";
